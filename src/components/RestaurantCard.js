@@ -1,4 +1,5 @@
 import React from "react";
+import CDN_URL from "../utils/constants";
 
 
 const RestaurantCard = ({ resData }) => {
@@ -6,7 +7,7 @@ const RestaurantCard = ({ resData }) => {
   const { cloudinaryImageId, name, cuisines, avgRating, deliveryTime ,costForTwo } = resData?.data;
   return (
     <div className="Res-card">
-        <img className="res-logo" src= { "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + cloudinaryImageId } alt="res-logo"/>
+        <img className="res-logo" src= { CDN_URL + cloudinaryImageId } alt="res-logo"/>
         <h3>{ name }</h3>
         <h5 className="cuisine">{ cuisines.join(", `") } </h5>
         <h5>{ avgRating } Stars</h5>
