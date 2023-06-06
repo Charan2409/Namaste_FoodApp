@@ -1,25 +1,31 @@
 .Header-container { 
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  border: 1px solid black;
-  background-color: antiquewhite;
+  border-bottom: 1px solid black;;
+  background-color: white;
 }
 
 .logo { 
   width: 80px;
-  background-color: antiquewhite;
 }
 
+.nav-container {
+   padding:  0px 20px;
+}
 
 .nav-container > ul { 
   display: flex;
   font-size: 18px;
   list-style-type: none;
+  flex-direction: row;
+  padding: 15px;
 }
 
 .nav-container > ul > li{ 
-  padding: 10px;
-  margin: 3px;
+  padding: 15px;
+  margin: 5px;
+  width: 100px;
 
 }
 .Search {
@@ -27,16 +33,19 @@
 }
 
 .Res-card{
-  padding: 17px;
-  border: 0.1px solid black;
+  padding: 12px;
+  border: 0.1px;
   border-radius: 3%;
   width: 200px;
-  margin: 55px;
+  height: 400px;
+  margin: 30px;
+  z-index: 2000;
+  display: block;
 }
 
 .Res-card:hover{
   border: 18px;
-  box-shadow: 5px 10px 30px #aa5252;
+  box-shadow: 5px 10px 30px #949292;
 }
 
 .res-logo { 
@@ -49,6 +58,20 @@
   display: flex;
   padding: 0px 30px;
   flex-wrap: wrap;
-  margin: 5px;
+  margin: 3px;
   border: 3px;
+}
+
+.res-btn-rating {
+  margin: 12px;
+  padding-bottom: 10px;
+}
+
+.logout-button , .login-button {
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.search-button .res-btn-rating{
+  display: flex;
 }
