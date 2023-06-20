@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -10,6 +10,8 @@ import Cart from "./components/Cart";
 import Error from "./components/Error";
 import Body from "./components/Body";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Instamart from "./components/Instamart";
+import ShimmerEffect from "./components/ShimmerEffect";
 
 const appRouter = createBrowserRouter([
   {
@@ -32,6 +34,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/instamart",
+        element: (
+          <Suspense fallback={<ShimmerEffect />}>
+            <Instamart />
+          </Suspense>
+        ),
       },
       {
         path: "/Restaurant/:id",
