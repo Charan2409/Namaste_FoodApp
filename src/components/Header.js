@@ -3,10 +3,7 @@ import food_logo from "./food_logo.png";
 import { Link } from "react-router-dom";
 import useOnline from "./useOnline";
 
-
-
-const Instamart = lazy(() => import("./components/Instamart"));
-
+const Instamart = lazy(() => import("../components/Instamart"));
 
 const LoggedInUser = () => {
   return false;
