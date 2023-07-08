@@ -40,7 +40,6 @@ const RestaurantMenu = () => {
       <p>{avgRating}</p>
       <p>{costForTwoMessage}</p>
       <p>{totalRatingsString}</p>
-      <h2> Menu </h2>
       <p>
         {" "}
         {itemCards?.map((item) => (

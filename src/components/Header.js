@@ -5,10 +5,6 @@ import useOnline from "./useOnline";
 
 const Instamart = lazy(() => import("../components/Instamart"));
 
-const LoggedInUser = () => {
-  return false;
-};
-
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -23,32 +19,34 @@ const Header = () => {
   };
 
   return (
-    <div className="Header-container">
-      <div className="logo-container">
-        <img className="logo" src={food_logo} alt="" />
-      </div>
+    <div className="flex flex-wrap bg-pink-50 shadow-lg justify-between">
+      <img
+        className="h-28 w-28 p-2 m-1 sm:items-center sm:justify-center md:items-start lg:items-start"
+        src={food_logo}
+        alt=""
+      />
       <div className="nav-container">
-        <ul>
+        <ul className="flex flex-row py-10 sm:justify-center items-center md:justify-center items-center">
           <Link to="/">
-            <li>Home</li>
+            <li className="px-2 hover:font-bold">Home</li>
           </Link>
           <Link to="/about">
-            <li>About</li>
+            <li className="px-2 hover:font-bold">About</li>
           </Link>
           <Link to="/contact">
-            <li>Contact</li>
+            <li className="px-2 hover:font-bold">Contact</li>
           </Link>
           <Link to="/cart">
-            <li>Cart</li>
+            <li className="px-2 hover:font-bold">Cart</li>
           </Link>
           <Link to="/Instamart">
-            <li>Instamart</li>
+            <li className="px-2 hover:font-bold">Instamart</li>
           </Link>
         </ul>
       </div>
-      <h3>{isOnline ? "✅" : "🔴"}</h3>
+      <h3 className="px-2">{isOnline ? "✅" : "🔴"}</h3>
       {isLoggedIn ? (
-        <button className="logout-button" onClick={handleLogOut}>
+        <button className="logout-button " onClick={handleLogOut}>
           Log Out
         </button>
       ) : (

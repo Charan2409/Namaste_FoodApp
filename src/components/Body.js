@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import ShimmerEffect from "./ShimmerEffect";
 import { Link } from "react-router-dom";
 import { Restaurant_URL } from "../utils/constants";
-import useOnline from './useOnline';
+import useOnline from "./useOnline";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -20,6 +20,7 @@ const Body = () => {
     const json = await data.json();
     setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    console.log(json);
   };
 
   const isOnline = useOnline();
@@ -32,18 +33,18 @@ const Body = () => {
     <ShimmerEffect />
   ) : (
     <div className="body">
-      <div className="Search">
+      <div className="Search bg-pink-50 my-5 p-2 ">
         <input
-          type="search"
-          id="search"
+          type="text"
           placeholder="Search for restaurant..."
+          className="p-2 focus:bg-green-50 rounded-md m-2"
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
         />
         <button
-          className="search-button"
+          className="search-button  px-4 p-2 mx-1 bg-blue-600 rounded-full text-sm text-white hover:bg-blue-800 active:bg-blue-800 focus:ring focus:ring-blue-800 hover:shadow-xl active:placeholder:font-extrabold"
           onClick={() => {
             let filteredRestaurants = listOfRestaurants.filter((restaurant) =>
               restaurant.data.name
@@ -67,7 +68,7 @@ const Body = () => {
       >
         Top Rated Restaurant
       </button>
-      <div className="Res-container">
+      <div className="Res-container flex flex-wrap">
         {filteredRestaurants.map((restaurant) => (
           <Link
             to={"/Restaurant/" + restaurant.data.id}
