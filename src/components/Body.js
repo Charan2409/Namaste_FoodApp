@@ -18,9 +18,16 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(Restaurant_URL);
     const json = await data.json();
-    setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    console.log(json);
+    setListOfRestaurants(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestaurants(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    console.log(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    console.log(filteredRestaurants);
   };
 
   const isOnline = useOnline();
@@ -71,8 +78,8 @@ const Body = () => {
       <div className="Res-container flex flex-wrap">
         {filteredRestaurants.map((restaurant) => (
           <Link
-            to={"/Restaurant/" + restaurant.data.id}
-            key={restaurant.data.id}
+            to={"/Restaurant/" + restaurant.info.id}
+            key={restaurant.info.id}
           >
             <RestaurantCard resData={restaurant} />
           </Link>

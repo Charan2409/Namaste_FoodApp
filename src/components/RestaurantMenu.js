@@ -2,6 +2,9 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ShimmerEffect from "./ShimmerEffect";
 import { Menu_API } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem, removeItem } from "../utils/cartSlice";
+import { CDN_URL } from "../utils/constants";
 
 const RestaurantMenu = () => {
   useEffect(() => {
@@ -10,6 +13,19 @@ const RestaurantMenu = () => {
 
   const [restaurantInfo, setRestaurantInfo] = useState(null);
   const { id } = useParams();
+
+  const addFoodItem = (item) => {
+    dispatch(addItem(item));
+    console.log(item);
+  };
+  const removeFoodItem = (item) => {
+    dispatch(removeItem(item));
+  };
+
+  const dispatch = useDispatch();
+  const handleAddItems = () => {
+    dispatch(addItem("sai"));
+  };
 
   const fetchData = async () => {
     const data = await fetch(Menu_API + id);
@@ -20,36 +36,73 @@ const RestaurantMenu = () => {
 
   if (restaurantInfo === null) return <ShimmerEffect />;
 
-  const { name, cuisines, avgRating, costForTwoMessage, totalRatingsString } =
-    restaurantInfo.cards[0]?.card?.card?.info;
+  const {
+    name,
+    cuisines,
+    avgRating,
+    costForTwo,
+    totalRatingsString,
+    cloudinaryImageId,
+  } = restaurantInfo.cards[0]?.card?.card?.info;
 
   const { itemCards } =
     restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1].card
       ?.card ||
     restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2].card
       ?.card;
-
-  console.log(itemCards);
   if (itemCards === null) return <ShimmerEffect />;
 
   return (
-    <div className="menu">
-      <h1>Restaurant id: {id}</h1>
-      <h2>{name}</h2>
-      <h4>{cuisines.join(",")}</h4>
-      <p>{avgRating}</p>
-      <p>{costForTwoMessage}</p>
-      <p>{totalRatingsString}</p>
-      <p>
-        {" "}
-        {itemCards?.map((item) => (
-          <li key={item?.card?.info?.id}>
-            {item?.card?.info?.name} - {" RS."}
-            {item?.card?.info?.price / 100 ||
-              item?.card?.info?.defaultPrice / 100}
+    <div className="grid justify-center m-auto max-w-[70%] p-4">
+      <h1 className=" justify-center text text-3xl font-bold">Menu</h1>
+      <div className="Res-card w-56 h-80  p-2 m-6 h-10">
+        <ul>
+          <li>
+            <h2 className="grid text text-lg font-semibold">{name}</h2>
           </li>
-        ))}
-      </p>
+          <li className="cuisines text-sm">
+            <p>{cuisines.join(",")}</p>
+          </li>
+          <li className="cuisines text-sm">
+            <p>
+              {avgRating} || {totalRatingsString}
+            </p>
+          </li>
+          <li className="cuisines text-md font-serif py-2">
+            <p>Rs.{costForTwo / 100}</p>
+          </li>
+        </ul>
+      </div>
+      {/* <div className="restaurant-img rounded-lg md:w-[118] sm:w-[118] sm:h-full  sm:rounded-md">
+        <img src={CDN_URL + cloudinaryImageId} alt={name} />
+      </div> */}
+
+      <div className="menu-items flex-col py-44">
+        <p>
+          {" "}
+          {itemCards?.map((item) => (
+            <ul>
+              <li key={item?.card?.info?.id} className="justify-center">
+                {item?.card?.info?.name} - {" RS."}
+                {item?.card?.info?.price / 100 ||
+                  item?.card?.info?.defaultPrice / 100}
+                <button
+                  className="px-4 py-2 m-2 bg-green-400"
+                  onClick={() => addFoodItem(item)}
+                >
+                  Add
+                </button>
+                <button
+                  className="px-4 py-2 m-2 bg-red-100"
+                  onClick={() => removeFoodItem(item)}
+                >
+                  Remove
+                </button>
+              </li>
+            </ul>
+          ))}
+        </p>
+      </div>
     </div>
   );
 };

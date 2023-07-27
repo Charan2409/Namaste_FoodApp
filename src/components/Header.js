@@ -2,6 +2,7 @@ import React, { lazy, useState } from "react";
 import food_logo from "./food_logo.png";
 import { Link } from "react-router-dom";
 import useOnline from "./useOnline";
+import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
 
 const Instamart = lazy(() => import("../components/Instamart"));
 
@@ -17,6 +18,8 @@ const Header = () => {
   const handleLogIn = () => {
     setIsLoggedIn(true);
   };
+
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex flex-wrap bg-pink-50 shadow-lg justify-between">
@@ -37,7 +40,7 @@ const Header = () => {
             <li className="px-2 hover:font-bold">Contact</li>
           </Link>
           <Link to="/cart">
-            <li className="px-2 hover:font-bold">Cart</li>
+            <li className="px-2 hover:font-bold">Cart-{cartItems.length}</li>
           </Link>
           <Link to="/Instamart">
             <li className="px-2 hover:font-bold">Instamart</li>
