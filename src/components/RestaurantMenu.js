@@ -24,7 +24,7 @@ const RestaurantMenu = () => {
 
   const dispatch = useDispatch();
   const handleAddItems = () => {
-    dispatch(addItem("sai"));
+    dispatch(addItem("added item to "));
   };
 
   const fetchData = async () => {
@@ -36,14 +36,8 @@ const RestaurantMenu = () => {
 
   if (restaurantInfo === null) return <ShimmerEffect />;
 
-  const {
-    name,
-    cuisines,
-    avgRating,
-    costForTwo,
-    totalRatingsString,
-    cloudinaryImageId,
-  } = restaurantInfo.cards[0]?.card?.card?.info;
+  const { name, cuisines, avgRating, costForTwo, totalRatingsString } =
+    restaurantInfo.cards[0]?.card?.card?.info;
 
   const { itemCards } =
     restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1].card
@@ -54,8 +48,7 @@ const RestaurantMenu = () => {
 
   return (
     <div className="grid justify-center m-auto max-w-[70%] p-4">
-      <h1 className=" justify-center text text-3xl font-bold">Menu</h1>
-      <div className="Res-card w-56 h-80  p-2 m-6 h-10">
+      <div className="Res-card w-56 h-80  p-2 m-6 h-5">
         <ul>
           <li>
             <h2 className="grid text text-lg font-semibold">{name}</h2>
@@ -77,28 +70,52 @@ const RestaurantMenu = () => {
         <img src={CDN_URL + cloudinaryImageId} alt={name} />
       </div> */}
 
-      <div className="menu-items flex-col py-44">
+      <div className="menu-items flex-col py-5 justify-center">
         <p>
-          {" "}
+          <h1 className=" justify-center text text-3xl font-bold">Menu</h1>{" "}
           {itemCards?.map((item) => (
             <ul>
-              <li key={item?.card?.info?.id} className="justify-center">
-                {item?.card?.info?.name} - {" RS."}
-                {item?.card?.info?.price / 100 ||
-                  item?.card?.info?.defaultPrice / 100}
-                <button
-                  className="px-4 py-2 m-2 bg-green-400"
-                  onClick={() => addFoodItem(item)}
+              <div className="menu-card shadow-lg py-5 box-border hover:box-content grid">
+                <li
+                  key={item?.card?.info?.id}
+                  className=" flex justify-start p-2"
                 >
-                  Add
-                </button>
-                <button
-                  className="px-4 py-2 m-2 bg-red-100"
-                  onClick={() => removeFoodItem(item)}
-                >
-                  Remove
-                </button>
-              </li>
+                  <div className="text  ">
+                    <div className="text font-bold w-3">
+                      {item?.card?.info?.name}
+                    </div>{" "}
+                    -
+                    <div className="text text-sm">
+                      {" RS."}
+                      {item?.card?.info?.price / 100 ||
+                        item?.card?.info?.defaultPrice / 100}
+                    </div>
+                  </div>
+                  <div className="image-buttons ml-[600px] ml-auto mr-0 flex flex-col">
+                    <div>
+                      <img
+                        src={CDN_URL + item?.card?.info?.imageId}
+                        alt="cart item "
+                        className="width w-[35%] ml-auto"
+                      />
+                    </div>
+                    <div className=" ml-auto mr-0 flex flex-row py-4">
+                      <button
+                        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md mr-2"
+                        onClick={() => addFoodItem(item)}
+                      >
+                        Add
+                      </button>
+                      <button
+                        className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-md"
+                        onClick={() => removeFoodItem(item)}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              </div>
             </ul>
           ))}
         </p>

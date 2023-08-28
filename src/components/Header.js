@@ -47,7 +47,7 @@ const Header = () => {
           </Link>
         </ul>
       </div>
-      <h3 className="px-2">{isOnline ? "✅" : "🔴"}</h3>
+      <h3 className="px-2 py-10">{isOnline ? "✅" : "🔴"}</h3>
       {isLoggedIn ? (
         <button className="logout-button " onClick={handleLogOut}>
           Log Out
