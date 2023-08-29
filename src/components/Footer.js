@@ -3,9 +3,8 @@ import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="bg-pink-50">
+    <div className="bg-pink-50 fixed bottom-0 right-0 left-0">
       <div className="container mx-auto p-4 lg:p-8 text-center">
-        <h1 className="font-semibold text-2xl mb-4">Contact Us</h1>
         <h1 className="mb-4">
           This app is developed by{" "}
           <a
