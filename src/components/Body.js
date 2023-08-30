@@ -26,7 +26,7 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-  console.log(listOfRestaurants);
+  console.log(filteredRestaurants);
 
   const isOnline = useOnline();
 
@@ -52,7 +52,7 @@ const Body = () => {
           className="search-button  px-4 p-2 mx-1 bg-blue-600 rounded-full text-sm text-white hover:bg-blue-800 active:bg-blue-800 focus:ring focus:ring-blue-800 hover:shadow-xl active:placeholder:font-extrabold"
           onClick={() => {
             let filteredRestaurants = listOfRestaurants.filter((restaurant) =>
-              restaurant.data.name
+              restaurant.info.name
                 .toLowerCase()
                 .includes(searchText.toLowerCase())
             );
@@ -66,7 +66,7 @@ const Body = () => {
         className="res-btn-rating"
         onClick={() => {
           let mainList = listOfRestaurants.filter(
-            (restaurant) => restaurant.data.avgRating > 4
+            (restaurant) => restaurant.info.avgRating > 4
           );
           setFilteredRestaurants(mainList);
         }}
