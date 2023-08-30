@@ -26,7 +26,6 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-  console.log(filteredRestaurants);
 
   const isOnline = useOnline();
 
@@ -49,7 +48,7 @@ const Body = () => {
           }}
         />
         <button
-          className="search-button  px-4 p-2 mx-1 bg-blue-600 rounded-full text-sm text-white hover:bg-blue-800 active:bg-blue-800 focus:ring focus:ring-blue-800 hover:shadow-xl active:placeholder:font-extrabold"
+          className="search-button  px-4 p-2 mx-1 bg-blue-600 font-semibold rounded-md text-sm text-white hover:bg-blue-800 active:bg-blue-800 focus:ring focus:ring-blue-800 hover:shadow-xl active:placeholder:font-extrabold"
           onClick={() => {
             let filteredRestaurants = listOfRestaurants.filter((restaurant) =>
               restaurant.info.name
@@ -63,7 +62,7 @@ const Body = () => {
         </button>
       </div>
       <button
-        className="res-btn-rating"
+        className="res-btn-rating px-4 p-2 mx-1 bg-blue-600 font-semibold rounded-md text-sm text-white hover:bg-blue-800 active:bg-blue-800 focus:ring focus:ring-blue-800 hover:shadow-xl active:placeholder:font-extrabold"
         onClick={() => {
           let mainList = listOfRestaurants.filter(
             (restaurant) => restaurant.info.avgRating > 4

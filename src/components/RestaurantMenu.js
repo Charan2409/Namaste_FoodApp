@@ -30,7 +30,6 @@ const RestaurantMenu = () => {
   const fetchData = async () => {
     const data = await fetch(Menu_API + id);
     const json = await data.json();
-    console.log(json);
     setRestaurantInfo(json?.data);
   };
 
@@ -43,7 +42,9 @@ const RestaurantMenu = () => {
     restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1].card
       ?.card ||
     restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2].card
-      ?.card;
+      ?.card?.itemCards;
+  console.log(itemCards);
+
   if (itemCards === null) return <ShimmerEffect />;
 
   return (
