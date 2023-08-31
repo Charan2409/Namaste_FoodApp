@@ -1,17 +1,18 @@
-import React, { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
-import About from "./components/About";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import Error from "./components/Error";
 import Body from "./components/Body";
 import RestaurantMenu from "./components/RestaurantMenu";
-import Instamart from "./components/Instamart";
 import ShimmerEffect from "./components/ShimmerEffect";
+
+const Instamart = lazy(() => import("./components/Instamart"));
+const About = lazy(() => import("./components/About"));
 
 const appRouter = createBrowserRouter([
   {
@@ -36,7 +37,7 @@ const appRouter = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: "/instamart",
+        path: "/Instamart",
         element: (
           <Suspense fallback={<ShimmerEffect />}>
             <Instamart />

@@ -1,10 +1,10 @@
-import React, { lazy, useState } from "react";
+import React, { useState } from "react";
 import food_logo from "./food_logo.png";
 import { Link } from "react-router-dom";
 import useOnline from "./useOnline";
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
-const Instamart = lazy(() => import("../components/Instamart"));
+
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

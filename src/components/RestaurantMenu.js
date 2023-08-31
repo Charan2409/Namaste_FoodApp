@@ -9,7 +9,7 @@ import { CDN_URL } from "../utils/constants";
 const RestaurantMenu = () => {
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [ ]);
 
   const [restaurantInfo, setRestaurantInfo] = useState(null);
   const { id } = useParams();
@@ -23,9 +23,9 @@ const RestaurantMenu = () => {
   };
 
   const dispatch = useDispatch();
-  const handleAddItems = () => {
-    dispatch(addItem("added item to "));
-  };
+  // const handleAddItems = () => {
+  //   dispatch(addItem("added item to "));
+  // };
 
   const fetchData = async () => {
     const data = await fetch(Menu_API + id);
