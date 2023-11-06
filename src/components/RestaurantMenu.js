@@ -49,7 +49,7 @@ const RestaurantMenu = () => {
 
   return (
     <div className="grid justify-center m-auto max-w-[70%] p-4">
-      <div className="Res-card w-56 h-80  p-2 m-6 h-5">
+      <div className="Res-card w-80 h-80  p-2 m-6">
         <ul>
           <li>
             <h2 className="grid text text-lg font-semibold">{name}</h2>
@@ -76,23 +76,23 @@ const RestaurantMenu = () => {
           <h1 className=" justify-center text text-3xl font-bold">Menu</h1>{" "}
           {itemCards?.map((item) => (
             <ul>
-              <div className="menu-card shadow-lg py-5 box-border hover:box-content grid">
+              <div className="menu-card w-[100%] shadow-lg py-5 box-border hover:box-content grid">
                 <li
                   key={item?.card?.info?.id}
                   className=" flex justify-start p-2"
                 >
                   <div className="text  ">
-                    <div className="text font-bold w-3">
+                    <div className="text font-bold w-auto">
                       {item?.card?.info?.name}
                     </div>{" "}
                     -
                     <div className="text text-sm">
-                      {" RS."}
+                      {" Rs."}
                       {item?.card?.info?.price / 100 ||
                         item?.card?.info?.defaultPrice / 100}
                     </div>
                   </div>
-                  <div className="image-buttons ml-[600px] ml-auto mr-0 flex flex-col">
+                  <div className="image-buttons ml-[600px] mr-0 flex flex-col">
                     <div>
                       <img
                         src={CDN_URL + item?.card?.info?.imageId}

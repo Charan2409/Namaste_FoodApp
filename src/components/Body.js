@@ -36,7 +36,7 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <ShimmerEffect />
   ) : (
-    <div className="body">
+    <div className="body h-screen">
       <div className="Search bg-pink-50 my-5 p-2 ">
         <input
           type="text"

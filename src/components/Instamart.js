@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const Section = ({ title, description, isVisible, setIsVisible }) => {
   return (
     <div className="display display-block">
-      <div className="p-2 p-2 m-2 shadow shadow-gray-400 border-spacing-2 border-black">
+      <div className="p-2  m-2 shadow shadow-gray-400 border-spacing-2 border-black">
         <h2 className="font font-sans font-semibold">{title}</h2>
         {isVisible ? (
           <>
@@ -29,7 +29,7 @@ const Instamart = () => {
   const [visibleSection, setVisibleSection] = useState("");
   return (
     <div>
-      <h1 className="text-3xl text-3xl font-bold font-sans">Instamart</h1>
+      <h1 className="text-3xl font-bold font-sans">Instamart</h1>
 
       <Section
         title="Kitchen Items"

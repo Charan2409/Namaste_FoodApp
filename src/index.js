@@ -10,6 +10,7 @@ import Error from "./components/Error";
 import Body from "./components/Body";
 import RestaurantMenu from "./components/RestaurantMenu";
 import ShimmerEffect from "./components/ShimmerEffect";
+import ProceedToCheckOut from "./components/ProceedToCheckOut";
 
 const Instamart = lazy(() => import("./components/Instamart"));
 const About = lazy(() => import("./components/About"));
@@ -48,6 +49,10 @@ const appRouter = createBrowserRouter([
         path: "/Restaurant/:id",
         element: <RestaurantMenu />,
       },
+      {
+        path: 'Proceedtobuy',
+        element: <ProceedToCheckOut />
+      }
     ],
   },
 ]);

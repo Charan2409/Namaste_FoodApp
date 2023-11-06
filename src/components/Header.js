@@ -29,7 +29,7 @@ const Header = () => {
         alt=""
       />
       <div className="nav-container">
-        <ul className="flex flex-row py-10 sm:justify-center items-center md:justify-center items-center">
+        <ul className="flex flex-row py-10 sm:justify-center md:justify-center items-center">
           <Link to="/">
             <li className="px-2 hover:font-bold">Home</li>
           </Link>
@@ -49,11 +49,11 @@ const Header = () => {
       </div>
       <h3 className="px-2 py-10">{isOnline ? "✅" : "🔴"}</h3>
       {isLoggedIn ? (
-        <button className="logout-button " onClick={handleLogOut}>
+        <button className="logout-button px-2 py-10  text-lg font-semibold hover:font-bold" onClick={handleLogOut}>
           Log Out
         </button>
       ) : (
-        <button className="login-button" onClick={handleLogIn}>
+        <button className="login-button px-2 py-10  text-lg font-semibold hover:font-bold " onClick={handleLogIn}>
           Log In
         </button>
       )}
